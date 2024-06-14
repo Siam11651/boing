@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkyesk738tjpd"
-path="res://.godot/imported/ball-fire.png-535474ff908174af21eb3d7bc1f23c66.ctex"
+uid="uid://ci17ijlwyblda"
+path="res://.godot/imported/paddle-normal-0.png-e349742bd4580393d4b946dd0d19c733.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ball/ball-fire.png"
-dest_files=["res://.godot/imported/ball-fire.png-535474ff908174af21eb3d7bc1f23c66.ctex"]
+source_file="res://artworks/paddle-normal/paddle-normal-0.png"
+dest_files=["res://.godot/imported/paddle-normal-0.png-e349742bd4580393d4b946dd0d19c733.ctex"]
 
 [params]
 

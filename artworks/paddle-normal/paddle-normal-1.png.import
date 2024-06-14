@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw7i3g5gb402k"
-path="res://.godot/imported/paddle-normal-3.png-bc1986708dca917b3635291bdeef32e8.ctex"
+uid="uid://b65a4ptpeplnh"
+path="res://.godot/imported/paddle-normal-1.png-5a6b115de6eca5bde670b28b0d434607.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/paddle-normal/paddle-normal-3.png"
-dest_files=["res://.godot/imported/paddle-normal-3.png-bc1986708dca917b3635291bdeef32e8.ctex"]
+source_file="res://artworks/paddle-normal/paddle-normal-1.png"
+dest_files=["res://.godot/imported/paddle-normal-1.png-5a6b115de6eca5bde670b28b0d434607.ctex"]
 
 [params]
 
