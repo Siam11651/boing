@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://cprd0ylrbm7sc"]
+
+[ext_resource type="Script" path="res://scripts/EditorBrick.cs" id="1_b641o"]
+[ext_resource type="Texture2D" uid="uid://cih2exktavdqq" path="res://artworks/bricks/brick-none.png" id="2_7d65n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6tkon"]
+size = Vector2(30, 15)
+
+[node name="EditorBrick" type="Area2D"]
+position = Vector2(15, 7.5)
+script = ExtResource("1_b641o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7d65n")
+
+[node name="HoverLines" type="Node2D" parent="."]
+visible = false
+position = Vector2(-15, -7.5)
+
+[node name="Line2D" type="Line2D" parent="HoverLines"]
+points = PackedVector2Array(0.5, 0, 0.5, 15)
+width = 1.0
+
+[node name="Line2D2" type="Line2D" parent="HoverLines"]
+points = PackedVector2Array(29.5, 0, 29.5, 15)
+width = 1.0
+
+[node name="Line2D3" type="Line2D" parent="HoverLines"]
+points = PackedVector2Array(0, 0.5, 30, 0.5)
+width = 1.0
+
+[node name="Line2D4" type="Line2D" parent="HoverLines"]
+points = PackedVector2Array(0, 14.5, 30, 14.5)
+width = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6tkon")

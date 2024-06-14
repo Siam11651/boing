@@ -1,89 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://chyakfvcmoigx"]
+[gd_scene load_steps=4 format=3 uid="uid://chyakfvcmoigx"]
 
-[ext_resource type="Script" path="res://scripts/Paddle.cs" id="1_5mktt"]
-[ext_resource type="SpriteFrames" uid="uid://3wr1kudbkpk8" path="res://animations/paddle-normal/paddle-normal-spriteframes.tres" id="1_gqmbg"]
-[ext_resource type="Texture2D" uid="uid://24ihtfnpbwbq" path="res://artworks/ball/ball-normal.png" id="3_ttc3e"]
-[ext_resource type="Script" path="res://scripts/Walls.cs" id="4_cmjqv"]
-[ext_resource type="Texture2D" uid="uid://cfjgnj75l057a" path="res://artworks/wall/wall.png" id="4_w6ha6"]
-[ext_resource type="PhysicsMaterial" uid="uid://0p7m6spbl024" path="res://physics-materials/wall-physics-material.tres" id="5_t5ca4"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x8lwo"]
-radius = 7.0
-height = 73.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_7qy47"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gk7pu"]
+[ext_resource type="PackedScene" uid="uid://c7s8ta5gcgm7o" path="res://prefabs/paddle.tscn" id="1_sxgus"]
+[ext_resource type="PackedScene" uid="uid://bodcbqbn0viue" path="res://prefabs/ball.tscn" id="2_rxye7"]
+[ext_resource type="PackedScene" uid="uid://bufxjof4ka22o" path="res://prefabs/walls.tscn" id="3_3wvkw"]
 
 [node name="test" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Paddle" type="Area2D" parent="."]
-position = Vector2(0, 285)
-script = ExtResource("1_5mktt")
-mBallInitSpeed = 250.0
+[node name="Paddle" parent="." instance=ExtResource("1_sxgus")]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Paddle"]
-sprite_frames = ExtResource("1_gqmbg")
+[node name="Ball" parent="." instance=ExtResource("2_rxye7")]
 
-[node name="BallInit" type="Node2D" parent="Paddle"]
-position = Vector2(0, -12.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_x8lwo")
-
-[node name="Ball" type="RigidBody2D" parent="."]
-position = Vector2(0, 272.5)
-gravity_scale = 0.0
-lock_rotation = true
-freeze = true
-linear_damp_mode = 1
-angular_damp_mode = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="Ball"]
-texture = ExtResource("3_ttc3e")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
-scale = Vector2(0.5, 0.5)
-shape = SubResource("CircleShape2D_7qy47")
-
-[node name="Walls" type="Node2D" parent="."]
-script = ExtResource("4_cmjqv")
-
-[node name="WallTop" type="StaticBody2D" parent="Walls"]
-position = Vector2(0, -324)
-physics_material_override = ExtResource("5_t5ca4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallTop"]
-position = Vector2(0, -9.5)
-scale = Vector2(5.95, 0.95)
-shape = SubResource("RectangleShape2D_gk7pu")
-
-[node name="WallLeft" type="StaticBody2D" parent="Walls"]
-position = Vector2(-576, 0)
-physics_material_override = ExtResource("5_t5ca4")
-
-[node name="Sprite2D" type="Sprite2D" parent="Walls/WallLeft"]
-texture = ExtResource("4_w6ha6")
-offset = Vector2(9.5, 0)
-flip_h = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallLeft"]
-position = Vector2(9.5, 0)
-scale = Vector2(0.95, 5.95)
-shape = SubResource("RectangleShape2D_gk7pu")
-
-[node name="WallRight" type="StaticBody2D" parent="Walls"]
-position = Vector2(576, 0)
-physics_material_override = ExtResource("5_t5ca4")
-
-[node name="Sprite2D" type="Sprite2D" parent="Walls/WallRight"]
-texture = ExtResource("4_w6ha6")
-offset = Vector2(-9.5, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallRight"]
-position = Vector2(-9.5, 0)
-scale = Vector2(0.95, 5.95)
-shape = SubResource("RectangleShape2D_gk7pu")
+[node name="Walls" parent="." instance=ExtResource("3_3wvkw")]

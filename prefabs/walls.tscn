@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bufxjof4ka22o"]
+
+[ext_resource type="Script" path="res://scripts/Walls.cs" id="1_g632i"]
+[ext_resource type="PhysicsMaterial" uid="uid://0p7m6spbl024" path="res://physics-materials/wall-physics-material.tres" id="2_cbkd4"]
+[ext_resource type="Texture2D" uid="uid://cfjgnj75l057a" path="res://artworks/wall/wall.png" id="3_04ac3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gk7pu"]
+
+[node name="Walls" type="Node2D"]
+script = ExtResource("1_g632i")
+
+[node name="WallTop" type="StaticBody2D" parent="."]
+position = Vector2(0, -324)
+physics_material_override = ExtResource("2_cbkd4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop"]
+position = Vector2(0, -9.5)
+scale = Vector2(5.95, 0.95)
+shape = SubResource("RectangleShape2D_gk7pu")
+
+[node name="WallLeft" type="StaticBody2D" parent="."]
+position = Vector2(-576, 0)
+physics_material_override = ExtResource("2_cbkd4")
+
+[node name="Sprite2D" type="Sprite2D" parent="WallLeft"]
+texture = ExtResource("3_04ac3")
+offset = Vector2(9.5, 0)
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
+position = Vector2(9.5, 0)
+scale = Vector2(0.95, 5.95)
+shape = SubResource("RectangleShape2D_gk7pu")
+
+[node name="WallRight" type="StaticBody2D" parent="."]
+position = Vector2(576, 0)
+physics_material_override = ExtResource("2_cbkd4")
+
+[node name="Sprite2D" type="Sprite2D" parent="WallRight"]
+texture = ExtResource("3_04ac3")
+offset = Vector2(-9.5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight"]
+position = Vector2(-9.5, 0)
+scale = Vector2(0.95, 5.95)
+shape = SubResource("RectangleShape2D_gk7pu")
