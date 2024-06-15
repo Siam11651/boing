@@ -88,7 +88,7 @@ public partial class Paddle : Area2D
 		}
 		else if(mBallStuckState == BallStuckState.STUCK)
 		{
-
+			// gonna implement later
 		}
 	}
 

@@ -10,7 +10,10 @@ public partial class GameBrick : StaticBody2D
 		mArea2D = GetNode<Area2D>("Area2D");
 		mArea2D.BodyEntered += (Node2D body) =>
 		{
-
+			if(body.Name == "Ball")
+			{
+				QueueFree();
+			}
 		};
 	}
 

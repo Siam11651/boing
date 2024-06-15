@@ -8,7 +8,7 @@
 size = Vector2(30, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6sgq"]
-size = Vector2(31, 16)
+size = Vector2(30, 15)
 
 [node name="GameBrick" type="StaticBody2D"]
 physics_material_override = ExtResource("1_7liwe")
