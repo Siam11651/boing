@@ -7,6 +7,7 @@ public partial class Walls : Node2D
 	public override void _Ready()
 	{
 		StaticBody2D wallTop = GetNode<StaticBody2D>("WallTop");
+		Area2D wallBottom = GetNode<Area2D>("WallBottom");
 		StaticBody2D wallLeft = GetNode<StaticBody2D>("WallLeft");
 		StaticBody2D wallRight = GetNode<StaticBody2D>("WallRight");
 		int halfWindowWidth = GetWindow().Size.X / 2;
@@ -19,6 +20,14 @@ public partial class Walls : Node2D
 		wallLeft.Scale = new Vector2(wallLeft.Scale.X, wallLeft.Scale.Y * heightRatio);
 		wallRight.Scale = new Vector2(wallRight.Scale.X, wallRight.Scale.Y * heightRatio);
 		wallTop.Scale = new Vector2(wallTop.Scale.X * widthRatio, wallTop.Scale.Y);
+		wallBottom.Scale = new Vector2(wallBottom.Scale.X * widthRatio, wallBottom.Scale.Y);
+		wallBottom.BodyEntered += (Node2D body) =>
+		{
+			if(body.Name == "Ball")
+			{
+				GetNode<GamePanel>("../../Control/Panel").Done(true);
+			}
+		};
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

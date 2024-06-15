@@ -1,18 +1,19 @@
 using Godot;
-using System;
 
-public partial class Game : Node2D
+public partial class Game : Node
 {
 	private const float BRICK_GAP = 0.1f;
 	private const float LEVEL_WIDTH = Globals.BRICK_WIDTH * Globals.COLUMN_COUNT + BRICK_GAP * (Globals.COLUMN_COUNT - 1);
 	private const float START_X = (-LEVEL_WIDTH + Globals.BRICK_WIDTH) / 2.0f;
 	private const float START_Y = 50.0f;
 	private PackedScene mBrickScene;
+	private Node2D mBrickHolder;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		mBrickScene = GD.Load<PackedScene>("prefabs/game-brick.tscn");
+		mBrickHolder = GetNode<Node2D>("Level/BrickHolder");
 		int[,] brickSelections = Globals.BrickSelections;
 		float posY = START_Y;
 
@@ -29,7 +30,7 @@ public partial class Game : Node2D
 					Sprite2D sprite2D = newBrick.GetNode<Sprite2D>("Sprite2D");
 					sprite2D.Texture = Globals.BrickImageTextures[brickSelections[i, j]];
 
-					AddChild(newBrick);
+					mBrickHolder.AddChild(newBrick);
 				}
 
 				posX += Globals.BRICK_WIDTH + BRICK_GAP;

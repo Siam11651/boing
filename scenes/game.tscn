@@ -1,18 +1,104 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwvdj7hi4xsn0"]
+[gd_scene load_steps=7 format=3 uid="uid://bwvdj7hi4xsn0"]
 
 [ext_resource type="Script" path="res://scripts/Game.cs" id="1_eoh3n"]
 [ext_resource type="PackedScene" uid="uid://c7s8ta5gcgm7o" path="res://prefabs/paddle.tscn" id="2_llg7d"]
 [ext_resource type="PackedScene" uid="uid://bufxjof4ka22o" path="res://prefabs/walls.tscn" id="3_wvm3j"]
 [ext_resource type="PackedScene" uid="uid://bodcbqbn0viue" path="res://prefabs/ball.tscn" id="4_cv0oy"]
+[ext_resource type="Script" path="res://scripts/GamePanel.cs" id="5_pbr77"]
 
-[node name="Game" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mo22"]
+bg_color = Color(0.588235, 0.588235, 0.588235, 1)
+
+[node name="Game" type="Node"]
 script = ExtResource("1_eoh3n")
 
-[node name="Paddle" parent="." instance=ExtResource("2_llg7d")]
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Paddle" parent="Level" instance=ExtResource("2_llg7d")]
 position = Vector2(576, 600)
 
-[node name="Walls" parent="." instance=ExtResource("3_wvm3j")]
+[node name="Walls" parent="Level" instance=ExtResource("3_wvm3j")]
 position = Vector2(576, 324)
 
-[node name="Ball" parent="." instance=ExtResource("4_cv0oy")]
+[node name="Ball" parent="Level" instance=ExtResource("4_cv0oy")]
 position = Vector2(576, 579)
+
+[node name="BrickHolder" type="Node2D" parent="Level"]
+
+[node name="Control" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4mo22")
+script = ExtResource("5_pbr77")
+
+[node name="PauseMenu" type="VBoxContainer" parent="Control/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/Panel/PauseMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="Control/Panel/PauseMenu"]
+layout_mode = 2
+text = "Resume"
+
+[node name="MainMenu" type="Button" parent="Control/Panel/PauseMenu"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="DoneMenu" type="VBoxContainer" parent="Control/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/Panel/DoneMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Level Complete"
+horizontal_alignment = 1
+
+[node name="Retry" type="Button" parent="Control/Panel/DoneMenu"]
+layout_mode = 2
+text = "Retry"
+
+[node name="MainMenu" type="Button" parent="Control/Panel/DoneMenu"]
+layout_mode = 2
+text = "Main Menu"
