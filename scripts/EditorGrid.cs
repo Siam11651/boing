@@ -3,34 +3,38 @@ using System;
 
 public partial class EditorGrid : Node2D
 {
-	private const int ROW_COUNT = 25;
-	private const int COLUMN_COUNT = 25;
-	private const float BRICK_WIDTH = 30.0f;
-	private const float BRICK_HEIGHT = 15.0f;
-	private const float GAP = 1.0f;
+	private EditorBrick[,] mEditorBricks = new EditorBrick[Globals.ROW_COUNT, Globals.COLUMN_COUNT];
 	private PackedScene mEditorBrickScene;
+	public EditorBrick[,] EditorBricks
+	{
+		get
+		{
+			return mEditorBricks;
+		}
+	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		mEditorBrickScene = GD.Load<PackedScene>("prefabs/editor-brick.tscn");
-		float posY = BRICK_HEIGHT / 2.0f;
+		float posY = Globals.BRICK_HEIGHT / 2.0f;
 
-		for(int i = 0; i < ROW_COUNT; ++i)
+		for(int i = 0; i < Globals.ROW_COUNT; ++i)
 		{
-			float posX = BRICK_WIDTH / 2.0f;
+			float posX = Globals.BRICK_WIDTH / 2.0f;
 
-			for(int j = 0; j < COLUMN_COUNT; ++j)
+			for(int j = 0; j < Globals.COLUMN_COUNT; ++j)
 			{
 				Area2D newEditorBrick = mEditorBrickScene.Instantiate<Area2D>();
 				newEditorBrick.Position = new Vector2(posX, posY);
 
 				AddChild(newEditorBrick);
 
-				posX += BRICK_WIDTH + GAP;
+				mEditorBricks[i, j] = (EditorBrick)newEditorBrick;
+				posX += Globals.BRICK_WIDTH + Globals.BRICK_GAP;
 			}
 
-			posY += BRICK_HEIGHT + GAP;
+			posY += Globals.BRICK_HEIGHT + Globals.BRICK_GAP;
 		}
 	}
 

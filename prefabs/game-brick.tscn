@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dokcm14r7xfs2"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://cq3qxykwvrp2h" path="res://physics-materials/brick-physics-material.tres" id="1_7liwe"]
+[ext_resource type="Script" path="res://scripts/GameBrick.cs" id="2_0do8u"]
+[ext_resource type="Texture2D" uid="uid://cih2exktavdqq" path="res://artworks/bricks/brick-none.png" id="3_uuj4g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u16s7"]
+size = Vector2(30, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6sgq"]
+size = Vector2(31, 16)
+
+[node name="GameBrick" type="StaticBody2D"]
+physics_material_override = ExtResource("1_7liwe")
+script = ExtResource("2_0do8u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_uuj4g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u16s7")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_c6sgq")

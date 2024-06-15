@@ -8,8 +8,7 @@ public partial class Paddle : Area2D
 		UNSTUCK, INIT, STUCK
 	}
 
-	[Export]
-	private float mBallInitSpeed;
+	private const float BALL_INIT_SPEED = 250.0f;
 	private BallStuckState mBallStuckState = BallStuckState.INIT;
 	private int mWindowWidth;
 	private float mPaddleLimit;
@@ -35,7 +34,7 @@ public partial class Paddle : Area2D
 			float velocityComponentY = -0.5f - (float)random.NextDouble() / 2.0f;
 			float velocityComponentX = MathF.Sqrt(1.0f - velocityComponentY * velocityComponentY) * (1.0f - 2.0f * directionMultiplier);
 			mBall.Freeze = false;
-			mBall.LinearVelocity = new Vector2(velocityComponentX, velocityComponentY) * mBallInitSpeed;
+			mBall.LinearVelocity = new Vector2(velocityComponentX, velocityComponentY) * BALL_INIT_SPEED;
 		}
 	}
 
@@ -71,7 +70,7 @@ public partial class Paddle : Area2D
 					componentY *= -1.0f;
 				}
 
-				mBall.LinearVelocity = new Vector2(componentX, componentY) * mBallInitSpeed;
+				mBall.LinearVelocity = new Vector2(componentX, componentY) * BALL_INIT_SPEED;
 			}
 		};
 	}
@@ -81,7 +80,7 @@ public partial class Paddle : Area2D
 	{
 		mDeltaTime = delta;
 		float newPositionX = Math.Clamp(GetViewport().GetMousePosition().X - mWindowWidth / 2.0f, -mPaddleLimit, mPaddleLimit);
-		Position = new Vector2(newPositionX, Position.Y);
+		Position = new Vector2(newPositionX + mWindowWidth / 2.0f, Position.Y);
 
 		if(mBallStuckState == BallStuckState.INIT)
 		{

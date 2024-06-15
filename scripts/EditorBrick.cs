@@ -1,5 +1,4 @@
 using Godot;
-using System.Diagnostics;
 
 public partial class EditorBrick : Area2D
 {
@@ -8,9 +7,17 @@ public partial class EditorBrick : Area2D
 	private float mRight;
 	private float mTop;
 	private float mBottom;
+	private int mSelectedBrick = -1;
 	private Vector2 mMousePos;
 	private Sprite2D mSprite;
 	private EditorControl mEditorControlScript;
+	public int SelectedBrick
+	{
+		get
+		{
+			return mSelectedBrick;
+		}
+	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -36,11 +43,13 @@ public partial class EditorBrick : Area2D
 				{
 					if(mEditorControlScript.SelectedBrick != -1)
 					{
-						mSprite.Texture = mEditorControlScript.GetBrickTexture(mEditorControlScript.SelectedBrick);
+						mSelectedBrick = mEditorControlScript.SelectedBrick;
+						mSprite.Texture = Globals.BrickImageTextures[mSelectedBrick];
 					}
 				}
 				else
 				{
+					mSelectedBrick = -1;
 					mSprite.Texture = mEditorControlScript.BrickNoneTexture;
 				}
 			}

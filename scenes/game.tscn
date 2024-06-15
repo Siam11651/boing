@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwvdj7hi4xsn0"]
+
+[ext_resource type="Script" path="res://scenes/Game.cs" id="1_eoh3n"]
+[ext_resource type="PackedScene" uid="uid://c7s8ta5gcgm7o" path="res://prefabs/paddle.tscn" id="2_llg7d"]
+[ext_resource type="PackedScene" uid="uid://bufxjof4ka22o" path="res://prefabs/walls.tscn" id="3_wvm3j"]
+[ext_resource type="PackedScene" uid="uid://bodcbqbn0viue" path="res://prefabs/ball.tscn" id="4_cv0oy"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_eoh3n")
+
+[node name="Paddle" parent="." instance=ExtResource("2_llg7d")]
+position = Vector2(576, 600)
+
+[node name="Walls" parent="." instance=ExtResource("3_wvm3j")]
+position = Vector2(576, 324)
+
+[node name="Ball" parent="." instance=ExtResource("4_cv0oy")]
+position = Vector2(576, 579)

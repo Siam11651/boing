@@ -14,7 +14,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_24ebg")
 
-[node name="Close" type="Button" parent="Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -22,11 +22,19 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -70.0
-offset_top = -60.0
+offset_top = -51.0
 offset_right = -20.0
 offset_bottom = -20.0
 grow_horizontal = 0
 grow_vertical = 0
+alignment = 2
+
+[node name="Play" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+text = "Play!"
+
+[node name="Close" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
 text = "Close"
 icon_alignment = 1
 
@@ -92,10 +100,10 @@ columns = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control"]
 layout_mode = 1
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 63.0
-offset_bottom = 37.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 73.0
+offset_bottom = 47.0
 
 [node name="Label" type="Label" parent="Control/VBoxContainer2"]
 layout_mode = 2
@@ -107,5 +115,5 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="EditorGrid" type="Node2D" parent="."]
-position = Vector2(10, 37)
+position = Vector2(20, 47)
 script = ExtResource("2_j75hn")
