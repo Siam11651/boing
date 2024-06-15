@@ -15,6 +15,35 @@ public partial class EditorControl : Control
 	private Button mEraseButton;
 	private Button mCloseButton;
 
+	public int SelectedBrick
+	{
+		get
+		{
+			return mSelectedBrick;
+		}
+	}
+
+	public bool Drawing
+	{
+		get
+		{
+			return mDrawing;
+		}
+	}
+
+	public ImageTexture BrickNoneTexture
+	{
+		get
+		{
+			return mBrickNoneImageTexture;
+		}
+	}
+
+	public ImageTexture GetBrickTexture(int index)
+	{
+		return mBrickImageTextures[index];
+	}
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
