@@ -1,6 +1,6 @@
 # Boing
 
-Just trying out Godot (this thing is lit)
+Just trying out Godot (cuz Unity3D bad)
 
 ## Requirements:
 
