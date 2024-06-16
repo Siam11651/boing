@@ -8,6 +8,19 @@ public partial class Game : Node
 	private const float START_Y = 50.0f;
 	private PackedScene mBrickScene;
 	private Node2D mBrickHolder;
+	private int mTotalBricks = 0;
+	public int TotalBricks
+	{
+		get
+		{
+			return mTotalBricks;
+		}
+
+		set
+		{
+			mTotalBricks = value;
+		}
+	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -25,6 +38,7 @@ public partial class Game : Node
 			{
 				if(brickSelections[i, j] != -1)
 				{
+					++mTotalBricks;
 					StaticBody2D newBrick = mBrickScene.Instantiate<StaticBody2D>();
 					newBrick.Position = new Vector2(posX, posY);
 					Sprite2D sprite2D = newBrick.GetNode<Sprite2D>("Sprite2D");
